@@ -1,0 +1,274 @@
+/* =======================
+   RESET & BASE
+======================= */
+*,
+*::before,
+*::after { 
+    box-sizing: border-box; 
+}
+
+html, body { 
+    margin: 0; 
+    padding: 0; 
+}
+
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: #1a1a1a;
+  background: #fff;
+  line-height: 1.5;
+}
+
+img{ 
+    display:block; 
+    max-width:100%; 
+    height:auto; 
+}
+
+h1,h2,h3,p{ margin:0; }
+
+/* =======================
+   TOKENS
+======================= */
+:root{
+  --brand: #F3D047;         /* amarillo GlutOff */
+  --ink: #1f1f1f;
+  --muted: #6b6b6b;
+  --card: #fff;
+  --border:#e9e9e9;
+  --container: 1100px;
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0,0,0,.08);
+
+  /* mockup fijo (tocalo si lo querés más grande/chico) */
+  --mockup-w: 400px;
+}
+
+/* =======================
+   UTILS
+======================= */
+.container{
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: 40px 20px;
+}
+
+.center{ 
+    justify-content: center; 
+}
+
+/* =======================
+   HERO
+======================= */
+.site-header{ 
+    padding-top: 32px; 
+
+}
+
+/* 2 columnas, con gap más corto para acercar copy y mockup */
+.hero{
+  display: grid;
+  grid-template-columns: 1.1fr var(--mockup-w); /* segunda col. fija = mockup fijo */
+  align-items: center;
+  column-gap: 28px; /* <— más cerca */
+  row-gap: 24px;
+}
+
+.hero__copy h1{
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.hero__copy h1 span{ color: var(--ink); }
+
+.lead{
+  margin-top: 12px;
+  color:#3b3b3b;
+  font-size: 18px;
+}
+
+/* Botones store EN FILA en desktop */
+.store-buttons{
+  display:flex;
+  gap:16px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-top: 22px;
+}
+.store img{
+  width:180px;
+  height: auto;
+  border-radius: 0; 
+    box-shadow: var(--shadow);
+    display: block;
+    }
+.store img:hover{ transform: translateY(-2px); }
+
+/* Mockup: tamaño fijo y no se encoge */
+.hero__visual{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.phone{
+  width: var(--mockup-w);
+  max-width: none;      /* <— evita que se reduzca */
+  height:auto;
+  flex-shrink:0;        /* <— no se encoge */
+  filter: drop-shadow(0 25px 40px rgba(0,0,0,.18));
+}
+
+/* =======================
+   FEATURES
+======================= */
+.features{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  padding-top: 8px;
+}
+.feature{
+  display:grid;
+  grid-template-columns: 36px 1fr;
+  gap:12px;
+  align-items:start;
+}
+.tick{ width:28px; margin-top:6px; }
+.feature h3{ font-size:20px; font-weight:800; }
+.feature p{ color:#333; }
+
+/* =======================
+   CAPTURES
+======================= */
+.captures h2{
+  font-size:24px;
+  margin-bottom:18px;
+}
+.samples{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:26px;
+}
+.sample-card{
+  background: var(--card);
+  border:1px solid var(--border);
+  border-radius: var(--radius);
+  padding:14px;
+  box-shadow: var(--shadow);
+  display:grid;
+  place-items:center;
+}
+.sample-card img{
+  width:100%;
+  height:auto;
+  object-fit:cover;
+}
+
+/* =======================
+   TESTIMONIAL
+======================= */
+.testimonial{
+  display:grid;
+  grid-template-columns: 48px 1fr;
+  gap:16px;
+  align-items:start;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.quote-icon{
+  width:42px;           /* más grande */
+  opacity:.35;          /* visibles */
+  margin-top:22px;
+  margin-left:14px;
+}
+.testimonial blockquote{ padding:22px 10px; }
+.testimonial p{ font-size:18px; color:#222; line-height:1.6; }
+.testimonial footer{ margin-top:6px; color: var(--muted); }
+
+/* =======================
+   CTA
+======================= */
+.cta{ text-align:center; }
+.cta h2{ font-size:22px; margin-bottom:18px; }
+
+/* =======================
+   SUBSCRIBE
+======================= */
+.subscribe{
+  background:#fafafa;
+  border-block:1px solid var(--border);
+}
+.subscribe h2{
+  text-align:center; font-size:22px;
+}
+.subcopy{
+  text-align:center; color:#4a4a4a; margin-top:8px;
+}
+.newsletter{
+  margin:18px auto 8px;
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap:10px;
+  max-width:640px;
+}
+.newsletter input{
+  height:48px; padding:0 16px; border:1px solid var(--border);
+  border-radius:12px; font-size:16px; outline:none;
+}
+.newsletter button{
+  height:48px; padding:0 24px; border:0; border-radius:12px;
+  background: var(--brand); font-weight:800; cursor:pointer; box-shadow: var(--shadow);
+}
+.social{
+  margin-top:12px; display:flex; justify-content:center; gap:22px;
+}
+.social img{ width:28px; height:28px; }
+
+/* =======================
+   FOOTER
+======================= */
+.site-footer{
+  padding:26px 0 50px;
+  color:#7a7a7a; text-align:center;
+}
+
+/* =======================
+   A11Y
+======================= */
+.sr-only{
+  position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip: rect(0,0,0,0); white-space:nowrap; border:0;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+/* Tablet y abajo: 1 columna en hero, mockup fijo.
+   Si la pantalla es MÁS angosta que el mockup,
+   permitimos scroll horizontal SOLO en el header para no deformar. */
+@media (max-width: 980px){
+  .hero{
+    grid-template-columns: 1fr;
+    text-align:left;
+    justify-items:center;
+  }
+  .hero__visual{ order: -1; }
+  .hero__copy{ max-width:640px; }
+
+  .site-header .container{ overflow-x:auto; }
+}
+
+/* Móvil: columnas a 1, stores en columna */
+@media (max-width: 760px){
+  .features{ grid-template-columns: 1fr; }
+  .samples{ grid-template-columns: 1fr; }
+  .newsletter{ grid-template-columns: 1fr; }
+  .store-buttons{
+    flex-direction: column;   /* uno debajo del otro en móvil */
+    gap:14px;
+  }
+  .store img{ width:160px; }
+}
